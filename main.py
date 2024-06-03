@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from keras.utils import load_img, img_to_array
 import numpy as np
@@ -8,7 +8,7 @@ import os
 
 app = FastAPI()
 
-model = tf.keras.models.load_model('new_model.h5')
+model = tf.keras.models.load_model('model-Model3.h5')
 print("Model loaded")
 
 # Labels
@@ -54,5 +54,5 @@ async def predict(file: UploadFile):
     os.remove(imgFullPath)
 
     # Return the prediction value and corresponding label
-    return {"label": prediction_label, "prediction": float(predicted[0][index])}
+    return {"result": prediction_label, "percentage": float(predicted[0][index])}
 
