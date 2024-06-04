@@ -8,14 +8,14 @@ from io import BytesIO
 
 app = FastAPI()
 
-model = tf.keras.models.load_model('model-Model3.h5')
+model = tf.keras.models.load_model('./model-Model3.h5')
 print("Model loaded")
 
 # Labels
 labels = ["Dermatitis Atopik", "Dermatitis Kontak Alergi", "Dermatitis Perioral", "Dermatitis Seboroik", "Neurodermatitis", "Normal"]
 
 
-origins = ["https://rashio.tech"]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
